@@ -1,0 +1,73 @@
+{
+  "repo": "packetloom",
+  "language": "C",
+  "category": "Networking",
+  "goal": "Parse Ethernet, IPv4, and UDP packet fixtures with bounds checks.",
+  "review_model": {
+    "terms": [
+      "packet span",
+      "retry pressure",
+      "route drift",
+      "socket risk"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "packet span",
+      "signal": 63,
+      "slack": 49,
+      "drag": 32,
+      "confidence": 54,
+      "score": 133,
+      "lane": "watch"
+    },
+    {
+      "name": "stress",
+      "focus": "retry pressure",
+      "signal": 81,
+      "slack": 54,
+      "drag": 26,
+      "confidence": 59,
+      "score": 197,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "route drift",
+      "signal": 76,
+      "slack": 33,
+      "drag": 24,
+      "confidence": 61,
+      "score": 174,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "socket risk",
+      "signal": 88,
+      "slack": 36,
+      "drag": 24,
+      "confidence": 74,
+      "score": 214,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "packet span",
+      "signal": 67,
+      "slack": 31,
+      "drag": 13,
+      "confidence": 77,
+      "score": 203,
+      "lane": "ship"
+    }
+  ]
+}
